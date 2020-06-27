@@ -336,6 +336,7 @@ func resourceLxcCreate(d *schema.ResourceData, meta interface{}) error {
 	config.IgnoreUnpackErrors = d.Get("ignore_unpack_errors").(bool)
 	config.Lock = d.Get("lock").(string)
 	config.Memory = d.Get("memory").(int)
+	config.RootFs = d.Get("rootfs").(string)
 	// proxmox api allows multiple mountpoint sets,
 	// having a unique 'id' parameter foreach set
 	mountpoints := d.Get("mountpoint").(*schema.Set)
@@ -357,7 +358,6 @@ func resourceLxcCreate(d *schema.ResourceData, meta interface{}) error {
 	config.Pool = d.Get("pool").(string)
 	config.Protection = d.Get("protection").(bool)
 	config.Restore = d.Get("restore").(bool)
-	config.RootFs = d.Get("rootfs").(string)
 	config.SearchDomain = d.Get("searchdomain").(string)
 	config.SSHPublicKeys = d.Get("ssh_public_keys").(string)
 	config.Start = d.Get("start").(bool)
